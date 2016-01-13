@@ -1,0 +1,2 @@
+module EbdsHelper
+end

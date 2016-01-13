@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ebd_movie_map.description %>
+</p>
+
+<p>
+  <strong>Ebd:</strong>
+  <%= @ebd_movie_map.ebd %>
+</p>
+
+<p>
+  <strong>Movie:</strong>
+  <%= @ebd_movie_map.movie %>
+</p>
+
+<%= link_to 'Edit', edit_ebd_movie_map_path(@ebd_movie_map) %> |
+<%= link_to 'Back', ebd_movie_maps_path %>

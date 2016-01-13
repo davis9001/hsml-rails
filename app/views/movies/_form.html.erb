@@ -1,0 +1,93 @@
+<%= form_for(@movie) do |f| %>
+  <% if @movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+      <% @movie.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :plot %><br>
+    <%= f.text_field :plot %>
+  </div>
+  <div class="field">
+    <%= f.label :plot_outline %><br>
+    <%= f.text_field :plot_outline %>
+  </div>
+  <div class="field">
+    <%= f.label :tagline %><br>
+    <%= f.text_field :tagline %>
+  </div>
+  <div class="field">
+    <%= f.label :rating_votes %><br>
+    <%= f.text_field :rating_votes %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br>
+    <%= f.text_field :rating %>
+  </div>
+  <div class="field">
+    <%= f.label :writers %><br>
+    <%= f.text_field :writers %>
+  </div>
+  <div class="field">
+    <%= f.label :year_released %><br>
+    <%= f.text_field :year_released %>
+  </div>
+  <div class="field">
+    <%= f.label :thumbnails %><br>
+    <%= f.text_field :thumbnails %>
+  </div>
+  <div class="field">
+    <%= f.label :imdb_id %><br>
+    <%= f.text_field :imdb_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sortable_formatted_title %><br>
+    <%= f.text_field :sortable_formatted_title %>
+  </div>
+  <div class="field">
+    <%= f.label :runtime %><br>
+    <%= f.text_field :runtime %>
+  </div>
+  <div class="field">
+    <%= f.label :mpaa_rating %><br>
+    <%= f.text_field :mpaa_rating %>
+  </div>
+  <div class="field">
+    <%= f.label :genre %><br>
+    <%= f.text_field :genre %>
+  </div>
+  <div class="field">
+    <%= f.label :director %><br>
+    <%= f.text_field :director %>
+  </div>
+  <div class="field">
+    <%= f.label :original_title %><br>
+    <%= f.text_field :original_title %>
+  </div>
+  <div class="field">
+    <%= f.label :studio %><br>
+    <%= f.text_field :studio %>
+  </div>
+  <div class="field">
+    <%= f.label :trailer_url %><br>
+    <%= f.text_field :trailer_url %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

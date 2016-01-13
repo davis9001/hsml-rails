@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ebd.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ebd.description %>
+</p>
+
+<p>
+  <strong>Wikipedia url:</strong>
+  <%= @ebd.wikipedia_url %>
+</p>
+
+<%= link_to 'Edit', edit_ebd_path(@ebd) %> |
+<%= link_to 'Back', ebds_path %>

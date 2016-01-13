@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  plot: MyString
+  plot_outline: MyString
+  tagline: MyString
+  rating_votes: MyString
+  rating: MyString
+  writers: MyString
+  year_released: MyString
+  thumbnails: MyString
+  imdb_id: MyString
+  sortable_formatted_title: MyString
+  runtime: MyString
+  mpaa_rating: MyString
+  genre: MyString
+  director: MyString
+  original_title: MyString
+  studio: MyString
+  trailer_url: MyString
+  country: MyString
+
+two:
+  name: MyString
+  plot: MyString
+  plot_outline: MyString
+  tagline: MyString
+  rating_votes: MyString
+  rating: MyString
+  writers: MyString
+  year_released: MyString
+  thumbnails: MyString
+  imdb_id: MyString
+  sortable_formatted_title: MyString
+  runtime: MyString
+  mpaa_rating: MyString
+  genre: MyString
+  director: MyString
+  original_title: MyString
+  studio: MyString
+  trailer_url: MyString
+  country: MyString

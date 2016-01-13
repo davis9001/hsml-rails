@@ -1,0 +1,29 @@
+<%= form_for(@ebd_movie_map) do |f| %>
+  <% if @ebd_movie_map.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ebd_movie_map.errors.count, "error") %> prohibited this ebd_movie_map from being saved:</h2>
+
+      <ul>
+      <% @ebd_movie_map.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :ebd_id %><br>
+    <%= f.text_field :ebd_id %>
+  </div>
+  <div class="field">
+    <%= f.label :movie_id %><br>
+    <%= f.text_field :movie_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

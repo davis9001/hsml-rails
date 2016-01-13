@@ -1,0 +1,102 @@
+<p id="notice"><%= notice %></p>
+
+<ul>
+  <li>
+    <strong>Name:</strong>
+    <%= @movie.name %>
+  </li>
+
+  <li>
+    <strong>Plot:</strong>
+    <%= @movie.plot %>
+  </li>
+
+  <li>
+    <strong>Plot outline:</strong>
+    <%= @movie.plot_outline %>
+  </li>
+
+  <li>
+    <strong>Tagline:</strong>
+    <%= @movie.tagline %>
+  </li>
+
+  <li>
+    <strong>Rating votes:</strong>
+    <%= @movie.rating_votes %>
+  </li>
+
+  <li>
+    <strong>Rating:</strong>
+    <%= @movie.rating %>
+  </li>
+
+  <li>
+    <strong>Writers:</strong>
+    <%= @movie.writers %>
+  </li>
+
+  <li>
+    <strong>Year released:</strong>
+    <%= @movie.year_released %>
+  </li>
+
+  <li>
+    <strong>Thumbnails:</strong>
+    <%= @movie.thumbnails %>
+  </li>
+
+  <li>
+    <strong>Imdb:</strong>
+    <%= @movie.imdb_id %>
+  </li>
+
+  <li>
+    <strong>Sortable formatted title:</strong>
+    <%= @movie.sortable_formatted_title %>
+  </li>
+
+  <li>
+    <strong>Runtime:</strong>
+    <%= @movie.runtime %>
+  </li>
+
+  <li>
+    <strong>Mpaa rating:</strong>
+    <%= @movie.mpaa_rating %>
+  </li>
+
+  <li>
+    <strong>Genre:</strong>
+    <%= @movie.genre %>
+  </li>
+
+  <li>
+    <strong>Director:</strong>
+    <%= @movie.director %>
+  </li>
+
+  <li>
+    <strong>Original title:</strong>
+    <%= @movie.original_title %>
+  </li>
+
+  <li>
+    <strong>Studio:</strong>
+    <%= @movie.studio %>
+  </li>
+
+  <li>
+    <strong>Trailer url:</strong>
+    <%= @movie.trailer_url %>
+  </li>
+
+  <li>
+    <strong>Country:</strong>
+    <%= @movie.country %>
+  </li>
+  
+</ul>
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>
