@@ -37,6 +37,15 @@ class EbdMovieMapsController < ApplicationController
     end
   end
 
+  # GET /ebd-movie-maps/match/
+  def match
+    movie = Movie.find(params[:movie])
+    ebd = Ebd.find(params[:ebd])
+    @ebd_movie_map  = EbdMovieMap.new(movie: movie, ebd: ebd)
+    @ebd_movie_map.save
+    redirect_to movie
+  end
+
   # PATCH/PUT /ebd_movie_maps/1
   # PATCH/PUT /ebd_movie_maps/1.json
   def update

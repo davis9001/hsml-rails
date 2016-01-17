@@ -2,6 +2,15 @@ Rails.application.routes.draw do
   resources :ebd_movie_maps
   resources :ebds
   resources :movies
+
+  get '/movies/show-from-search/by', to: 'movies#show_from_title'
+  get '/movies/show-from-imdb-id/:imdb_id' => 'movies#show_from_imdb_id'
+  get '/movies/create-from-imdb-id/:imdb_id' => 'movies#create_from_imdb_id'
+  get '/movies/:id/add-ebd' => 'movies#add_ebd'
+  get '/erb_movie_map/new-from-movie' => 'erb_movie_map#new_from_movie'
+  get '/erb_movie_map/new-from-erb' => 'erb_movie_map#new_from_movie'
+  get '/erb_movie_map/new/' => 'erb_movie_map#new_from_movie'
+  get '/ebd-movie-map/match/' => 'ebd_movie_maps#match'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

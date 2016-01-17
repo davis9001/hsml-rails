@@ -12,7 +12,7 @@
 
 <p>
   <strong>Wikipedia url:</strong>
-  <%= @ebd.wikipedia_url %>
+  <%= link_to @ebd.wikipedia_url, @ebd.wikipedia_url, :target => 'new' %>
 </p>
 
 <%= link_to 'Edit', edit_ebd_path(@ebd) %> |

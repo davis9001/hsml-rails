@@ -16,8 +16,8 @@
     <% @ebd_movie_maps.each do |ebd_movie_map| %>
       <tr>
         <td><%= ebd_movie_map.description %></td>
-        <td><%= ebd_movie_map.ebd %></td>
-        <td><%= ebd_movie_map.movie %></td>
+        <td><%= link_to ebd_movie_map.ebd.name, ebd_movie_map.ebd %></td>
+        <td><% if ebd_movie_map.movie %> <%= link_to ebd_movie_map.movie.name, ebd_movie_map.movie %><% end %></td>
         <td><%= link_to 'Show', ebd_movie_map %></td>
         <td><%= link_to 'Edit', edit_ebd_movie_map_path(ebd_movie_map) %></td>
         <td><%= link_to 'Destroy', ebd_movie_map, method: :delete, data: { confirm: 'Are you sure?' } %></td>

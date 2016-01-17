@@ -1,3 +1,5 @@
+require 'omdbapi'
+
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
@@ -10,6 +12,19 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    # @ebds = Ebd.includes(:ebdMovieMaps).where('ebdMovieMaps.movie_id LIKE', "%#{params[:id]}%")
+  end
+
+  # GET /movies/show-from-imdb-id
+  # GET /movies/show-from-imdb-id.json
+  def show_from_imdb_id
+    @omdb_movie = OMDB.id(params[:imdb_id])
+  end
+
+  # GET /movies/show-from-title
+  # GET /movies/show-from-title.json
+  def show_from_title
+    @omdb_movies = OMDB.search(params[:title])
   end
 
   # GET /movies/new
@@ -35,6 +50,33 @@ class MoviesController < ApplicationController
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # POST /movies/create-from-imdbid
+  # POST /movies/create-from-imdbid.json
+  def create_from_imdb_id
+    omdb_movie = OMDB.id(params[:imdb_id])
+
+    @movie = Movie.new(name: omdb_movie.title, plot: omdb_movie.plot, rating_votes: omdb_movie.imdb_votes, rating: omdb_movie.imdb_rating, year_released: omdb_movie.year, thumbnails: omdb_movie.poster, imdb_id: omdb_movie.imdb_id, runtime: omdb_movie.runtime, mpaa_rating: omdb_movie.rated, genre: omdb_movie.genre, director: omdb_movie.director)
+    
+    respond_to do |format|
+      if @movie.save
+        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
+        format.json { render :show, status: :created, location: @movie }
+      else
+        format.html { render :new }
+        format.json { render json: @movie.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET /movies/1/add-ebd
+  def add_ebd
+    if (params[:ebd_id])
+      Ebd_movie_maps.new(ebd_id: params[:ebd_id], movie_id: params[:id])
+    end
+    @ebds = Ebd.all
+    set_movie()
   end
 
   # PATCH/PUT /movies/1

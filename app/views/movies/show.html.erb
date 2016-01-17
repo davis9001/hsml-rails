@@ -1,24 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+  <h1>
+    <%= @movie.name %>
+  </h1>
+  <p>
+    <%= @movie.plot %>
+  </p>
+
+  <p style='float:right; margin:3pt;'>
+    <img src="<%= @movie.thumbnails %>" />
+  </p>
+
 <ul>
   <li>
-    <strong>Name:</strong>
-    <%= @movie.name %>
+    <strong>Year released:</strong>
+    <%= @movie.year_released %>
   </li>
 
   <li>
-    <strong>Plot:</strong>
-    <%= @movie.plot %>
-  </li>
-
-  <li>
-    <strong>Plot outline:</strong>
-    <%= @movie.plot_outline %>
-  </li>
-
-  <li>
-    <strong>Tagline:</strong>
-    <%= @movie.tagline %>
+    <strong>IMDB Rating:</strong>
+    <%= @movie.rating %>
   </li>
 
   <li>
@@ -26,34 +27,11 @@
     <%= @movie.rating_votes %>
   </li>
 
-  <li>
-    <strong>Rating:</strong>
-    <%= @movie.rating %>
-  </li>
 
-  <li>
-    <strong>Writers:</strong>
-    <%= @movie.writers %>
-  </li>
-
-  <li>
-    <strong>Year released:</strong>
-    <%= @movie.year_released %>
-  </li>
-
-  <li>
-    <strong>Thumbnails:</strong>
-    <%= @movie.thumbnails %>
-  </li>
 
   <li>
     <strong>Imdb:</strong>
-    <%= @movie.imdb_id %>
-  </li>
-
-  <li>
-    <strong>Sortable formatted title:</strong>
-    <%= @movie.sortable_formatted_title %>
+    <%= link_to @movie.imdb_id, 'http://www.imdb.com/title/' + @movie.imdb_id, target: 'new' %>
   </li>
 
   <li>
@@ -77,26 +55,17 @@
   </li>
 
   <li>
-    <strong>Original title:</strong>
-    <%= @movie.original_title %>
+    <strong>EBDs:</strong>
+    <ul>
+      <% if !@ebds.blank? %>
+        <% for ebd in @ebds %>
+          <li><%= ebd.name %></li>          
+        <% end %>
+      <% end %>
+    </ul>
   </li>
-
-  <li>
-    <strong>Studio:</strong>
-    <%= @movie.studio %>
-  </li>
-
-  <li>
-    <strong>Trailer url:</strong>
-    <%= @movie.trailer_url %>
-  </li>
-
-  <li>
-    <strong>Country:</strong>
-    <%= @movie.country %>
-  </li>
-  
 </ul>
 
+<%= link_to 'Add EBD', '/movies/' + @movie.id.to_s + '/add-ebd' %> |
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<%= link_to 'Movies', movies_path %>

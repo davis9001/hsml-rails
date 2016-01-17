@@ -14,9 +14,8 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><%= movie.name %></td>
+        <td><%= link_to movie.name, movie %></td>
         <td><%= movie.year_released %></td>
-        <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -26,4 +25,7 @@
 
 <br>
 
-<%= link_to 'New Movie', new_movie_path %>
+New Movie
+<form action='/movies/show-from-search/by/' method='GET'>
+<input name='title' type='text' />
+</form>
