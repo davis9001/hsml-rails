@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>EBDs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ebds.each do |ebd| %>
+      <tr>
+        <td><%= link_to ebd.name, '/ebd-movie-map/match?ebd=' + ebd.id.to_s + '&movie=' + @movie.id.to_s %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

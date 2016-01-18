@@ -1,0 +1,91 @@
+<p id="notice"><%= notice %></p>
+
+  <div style='float:right;'>
+    <img src="<%= @omdb_movie.poster %>">
+  </div>
+
+
+<ul>
+  <li>
+    <strong>title:</strong>
+    <%= @omdb_movie.title %>
+  </li>
+
+  <li>
+    <strong>Year:</strong>
+    <%= @omdb_movie.year %>
+  </li>
+
+  <li>
+    <strong>Released:</strong>
+    <%= @omdb_movie.released %>
+  </li>
+
+  <li>
+    <strong>MPAA Rating:</strong>
+    <%= @omdb_movie.rated %>
+  </li>
+
+  <li>
+    <strong>IMDB Rating:</strong>
+    <%= @omdb_movie.imdb_rating %>
+  </li>
+
+  <li>
+    <strong>Runtime:</strong>
+    <%= @omdb_movie.runtime %>
+  </li>
+
+  <li>
+    <strong>Genre:</strong>
+    <%= @omdb_movie.genre %>
+  </li>
+
+  <li>
+    <strong>Director:</strong>
+    <%= @omdb_movie.director %>
+  </li>
+
+  <li>
+    <strong>Writer:</strong>
+    <%= @omdb_movie.writer %>
+  </li>
+
+  <li>
+    <strong>Actors:</strong>
+    <%= @omdb_movie.actors %>
+  </li>
+
+  <li>
+    <strong>Plot:</strong>
+    <%= @omdb_movie.plot %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @omdb_movie.type %>
+  </li>
+
+  <li>
+    <strong>IMDB ID:</strong>
+    <%= @omdb_movie.imdb_id %>
+  </li>
+
+  <li>
+    <strong>IMDB Votes:</strong>
+    <%= @omdb_movie.imdb_votes %>
+  </li>
+
+  <!-- :title, :year, :rated, :released, :runtime, :genre, :director, :writer, 
+:actors, :plot, :poster, :imdb_rating, :imdb_votes, :imdb_id, :type
+ -->
+
+</ul>
+
+<% if @movie_exists %>
+  <%= link_to 'View this movie', '/movies/' + @existing_movie_id.to_s %>
+<% else %>
+  <%= link_to 'Add this movie', '/movies/create-from-imdb-id/' + @omdb_movie.imdb_id %>  
+<% end %>
+
+<%= link_to 'Movies', movies_path %>

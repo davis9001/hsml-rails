@@ -10,6 +10,7 @@ class EbdsController < ApplicationController
   # GET /ebds/1
   # GET /ebds/1.json
   def show
+    @movies = Movie.joins(:ebdMovieMaps).where("ebd_movie_maps.ebd_id = ?", params[:id])
   end
 
   # GET /ebds/new

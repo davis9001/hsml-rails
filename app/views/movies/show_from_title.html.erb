@@ -1,0 +1,26 @@
+<% if notice %><div class="notice"><%= notice %></div><% end %>
+<% if alert %><div class="alert"><%= alert %></div><% end %>
+
+<h1>Movie Search Results</h1>
+
+<table>
+  <% if :error? %>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Year released</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @omdb_movies[:movies].each do |movie| %>
+        <tr>
+          <td><%= link_to movie.title, '/movies/show-from-imdb-id/' + movie.imdb_id %></td>
+          <td><%= movie.year %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <p>No matches found for title search.</p>
+  <% end %>
+</table>

@@ -1,4 +1,5 @@
-<p id="notice"><%= notice %></p>
+<% if notice %><div data-alert class="success callout"><%= notice %></div><% end %>
+<% if alert %><div data-alert class="alert callout"><%= alert %></div><% end %>
 
   <h1>
     <%= @movie.name %>
@@ -59,7 +60,7 @@
     <ul>
       <% if !@ebds.blank? %>
         <% for ebd in @ebds %>
-          <li><%= ebd.name %></li>          
+          <li><%= ebd.name %> <%= link_to '(remove)', '/ebd-movie-map/unmatch/?movie=' + @movie.id.to_s + '&ebd=' + ebd.id.to_s %></li>          
         <% end %>
       <% end %>
     </ul>

@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @ebd.name %>
-</p>
+</h1>
 
 <p>
   <strong>Description:</strong>
@@ -14,6 +13,18 @@
   <strong>Wikipedia url:</strong>
   <%= link_to @ebd.wikipedia_url, @ebd.wikipedia_url, :target => 'new' %>
 </p>
+
+<div>
+  <strong>Related Movies:</strong>
+  <ul>
+    <% @movies.each do |movie| %>
+      <li>
+        <%= link_to(image_tag(movie.thumbnails, width: '75'), '/movies/' + movie.id.to_s) %>
+        <%= link_to movie.name, '/movies/' + movie.id.to_s %>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <%= link_to 'Edit', edit_ebd_path(@ebd) %> |
 <%= link_to 'Back', ebds_path %>

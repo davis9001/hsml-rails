@@ -1,4 +1,4 @@
-require 'omdbapi'
+require 'omdb'
 
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
@@ -12,19 +12,27 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
-    # @ebds = Ebd.includes(:ebdMovieMaps).where('ebdMovieMaps.movie_id LIKE', "%#{params[:id]}%")
+    @ebds = Ebd.joins(:ebdMovieMaps).where("ebd_movie_maps.movie_id = ?", params[:id])
   end
 
   # GET /movies/show-from-imdb-id
   # GET /movies/show-from-imdb-id.json
   def show_from_imdb_id
-    @omdb_movie = OMDB.id(params[:imdb_id])
+    @omdb_movie = Omdb::Api.new.find(params[:imdb_id])[:movie]
+    @movie_exists = false
+    if existing_movie = Movie.find_by(imdb_id: params[:imdb_id])
+      @movie_exists = true
+      @existing_movie_id = existing_movie.id
+    end
   end
 
   # GET /movies/show-from-title
   # GET /movies/show-from-title.json
   def show_from_title
-    @omdb_movies = OMDB.search(params[:title])
+    @omdb_movies = Omdb::Api.new.search(params[:title])
+    if @omdb_movies[:status] != 200
+      redirect_to '/movies', alert: 'No results for that title on IMDB'
+    end
   end
 
   # GET /movies/new
@@ -55,9 +63,11 @@ class MoviesController < ApplicationController
   # POST /movies/create-from-imdbid
   # POST /movies/create-from-imdbid.json
   def create_from_imdb_id
-    omdb_movie = OMDB.id(params[:imdb_id])
+    omdb_movie = Omdb::Api.new.find(params[:imdb_id])[:movie]
 
     @movie = Movie.new(name: omdb_movie.title, plot: omdb_movie.plot, rating_votes: omdb_movie.imdb_votes, rating: omdb_movie.imdb_rating, year_released: omdb_movie.year, thumbnails: omdb_movie.poster, imdb_id: omdb_movie.imdb_id, runtime: omdb_movie.runtime, mpaa_rating: omdb_movie.rated, genre: omdb_movie.genre, director: omdb_movie.director)
+      # :loaded, :title, :year, :rated, :released, :runtime, :genre, :director, :writer, :actors, :plot,
+      # :poster, :imdb_rating, :imdb_votes, :imdb_id, :type, :metascore, :language, :country, :awards
     
     respond_to do |format|
       if @movie.save

@@ -42,8 +42,23 @@ class EbdMovieMapsController < ApplicationController
     movie = Movie.find(params[:movie])
     ebd = Ebd.find(params[:ebd])
     @ebd_movie_map  = EbdMovieMap.new(movie: movie, ebd: ebd)
-    @ebd_movie_map.save
-    redirect_to movie
+    if @ebd_movie_map.save
+      redirect_to movie, notice: 'EBD was added to movie.'
+    else
+      redirect_to movie, alert: 'EBD could not be added!'
+    end
+  end
+
+  # GET /ebd-movie-maps/unmatch/
+  def unmatch
+    movie = Movie.find(params[:movie])
+    ebd = Ebd.find(params[:ebd])
+    ebd_movie_map = EbdMovieMap.find_by movie_id: movie.id, ebd_id: ebd.id
+    if EbdMovieMap.destroy(ebd_movie_map.id)
+      redirect_to '/movies/' + movie.id.to_s, notice: 'EBD relationship deleted.'
+    else
+      redirect_to '/movies', alert: 'EBD relationship not deleted.'
+    end
   end
 
   # PATCH/PUT /ebd_movie_maps/1

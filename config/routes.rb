@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/erb_movie_map/new-from-erb' => 'erb_movie_map#new_from_movie'
   get '/erb_movie_map/new/' => 'erb_movie_map#new_from_movie'
   get '/ebd-movie-map/match/' => 'ebd_movie_maps#match'
+  get '/ebd-movie-map/unmatch/' => 'ebd_movie_maps#unmatch'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
